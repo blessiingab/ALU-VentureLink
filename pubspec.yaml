@@ -1,5 +1,5 @@
 name: alu_venture_link
-description: "ALU-VentureLink: A platform connecting ALU students with student-led startup internship opportunities."
+description: "ALU VentureLink - Connect, Build, Invest. A platform for students, startups, investors, and mentors."
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -11,12 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # UI & Design
+  # UI & Icons
   cupertino_icons: ^1.0.8
   google_fonts: ^6.1.0
   
   # State Management
   provider: ^6.4.1
+  
+  # Navigation
+  go_router: ^14.0.0
   
   # Firebase
   firebase_core: ^3.15.2
@@ -24,18 +27,15 @@ dependencies:
   cloud_firestore: ^5.0.0
   firebase_storage: ^12.0.0
   
-  # Routing
-  go_router: ^14.0.0
-  
   # Utilities
   intl: ^0.19.0
   uuid: ^4.0.0
-  dio: ^5.4.0
   cached_network_image: ^3.3.0
   shimmer: ^3.0.0
   timeago: ^3.5.0
   url_launcher: ^6.2.0
   share_plus: ^7.2.0
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:
