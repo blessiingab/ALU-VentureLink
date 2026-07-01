@@ -1,54 +1,60 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class AppColors {
-  // Primary Gradient
-  static const Color primary = Color(0xFF6366F1);
-  static const Color primaryLight = Color(0xFF818CF8);
-  static const Color primaryDark = Color(0xFF4F46E5);
+  // Modern Gradient System
+  static const Color primary = Color(0xFF5B4AFF); // Deep Purple
+  static const Color primaryLight = Color(0xFF8B7FFF);
+  static const Color primaryDark = Color(0xFF3D2FFF);
+  
+  static const Color secondary = Color(0xFF00D9FF); // Cyber Cyan
+  static const Color secondaryLight = Color(0xFF4FE9FF);
+  static const Color secondaryDark = Color(0xFF00A8CC);
+  
+  static const Color accent = Color(0xFFFF006E); // Hot Pink
+  static const Color accentLight = Color(0xFFFF4DA8);
+  static const Color accentDark = Color(0xFFCC0055);
+  
+  static const Color success = Color(0xFF00D084);
+  static const Color warning = Color(0xFFFFA500);
+  static const Color error = Color(0xFFFF3860);
+  static const Color info = Color(0xFF3273DC);
 
-  // Secondary
-  static const Color secondary = Color(0xFF8B5CF6);
-  static const Color secondaryLight = Color(0xFFA78BFA);
-
-  // Accent
-  static const Color accent = Color(0xFFEC4899);
-  static const Color accentLight = Color(0xFFF472B6);
-
-  // Status Colors
-  static const Color success = Color(0xFF10B981);
-  static const Color warning = Color(0xFFF59E0B);
-  static const Color error = Color(0xFFEF4444);
-  static const Color info = Color(0xFF3B82F6);
-
-  // Neutral
+  // Neutral Scale
   static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF000000);
-  static const Color grey50 = Color(0xFFF9FAFB);
-  static const Color grey100 = Color(0xFFF3F4F6);
-  static const Color grey200 = Color(0xFFE5E7EB);
-  static const Color grey300 = Color(0xFFD1D5DB);
-  static const Color grey400 = Color(0xFF9CA3AF);
-  static const Color grey500 = Color(0xFF6B7280);
-  static const Color grey600 = Color(0xFF4B5563);
-  static const Color grey700 = Color(0xFF374151);
-  static const Color grey800 = Color(0xFF1F2937);
-  static const Color grey900 = Color(0xFF111827);
-
-  // Surface
-  static const Color surface = Color(0xFFF9FAFB);
-  static const Color surfaceVariant = Color(0xFFF3F4F6);
-  static const Color background = Color(0xFFFFFFFF);
-  static const Color backgroundDark = Color(0xFF0F172A);
+  static const Color black = Color(0xFF0A0E27);
+  static const Color grey50 = Color(0xFFF8F9FF);
+  static const Color grey100 = Color(0xFFF0F1FF);
+  static const Color grey200 = Color(0xFFE8EBFF);
+  static const Color grey300 = Color(0xFFDDE1FF);
+  static const Color grey400 = Color(0xFFC4CCF0);
+  static const Color grey500 = Color(0xFF9BA3C1);
+  static const Color grey600 = Color(0xFF6B7190);
+  static const Color grey700 = Color(0xFF3F4760);
+  static const Color grey800 = Color(0xFF1F2540);
+  static const Color grey900 = Color(0xFF0A0E27);
 
   // Gradients
-  static const LinearGradient primaryGradient = LinearGradient(
-    colors: [primary, primaryLight],
+  static const LinearGradient purpleGradient = LinearGradient(
+    colors: [Color(0xFF5B4AFF), Color(0xFF8B7FFF)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
-  static const LinearGradient accentGradient = LinearGradient(
-    colors: [secondary, secondaryLight],
+  static const LinearGradient cyanGradient = LinearGradient(
+    colors: [Color(0xFF00D9FF), Color(0xFF4FE9FF)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient pinkGradient = LinearGradient(
+    colors: [Color(0xFFFF006E), Color(0xFFFF4DA8)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient darkGradient = LinearGradient(
+    colors: [Color(0xFF0A0E27), Color(0xFF1F2540)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
