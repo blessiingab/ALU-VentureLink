@@ -1,85 +1,61 @@
 import 'package:flutter/material.dart';
+import '../../models/user_model.dart';
 
 class AuthProvider extends ChangeNotifier {
+  User? _currentUser;
   bool _isLoggedIn = false;
-  bool _isOnboardingComplete = false;
-  String? _userRole; // 'student', 'startup', 'investor', 'mentor'
-  String? _userId;
-  String? _userName;
-  String? _userEmail;
-  String? _userProfileImage;
+  bool _isLoading = false;
 
-  // Getters
+  User? get currentUser => _currentUser;
   bool get isLoggedIn => _isLoggedIn;
-  bool get isOnboardingComplete => _isOnboardingComplete;
-  String? get userRole => _userRole;
-  String? get userId => _userId;
-  String? get userName => _userName;
-  String? get userEmail => _userEmail;
-  String? get userProfileImage => _userProfileImage;
-  bool get isStudent => _userRole == 'student';
-  bool get isStartup => _userRole == 'startup';
-  bool get isInvestor => _userRole == 'investor';
-  bool get isMentor => _userRole == 'mentor';
+  bool get isLoading => _isLoading;
+  String? get userRole => _currentUser?.userType;
 
-  // Login
-  Future<bool> login(String email, String password) async {
+  Future<void> login(String email, String password) async {
+    _isLoading = true;
+    notifyListeners();
     try {
       await Future.delayed(const Duration(seconds: 1));
+      _currentUser = User(
+        id: 'user_123',
+        name: 'John Doe',
+        email: email,
+        userType: 'student',
+        university: 'African Leadership University',
+        course: 'Computer Science',
+        createdAt: DateTime.now(),
+      );
       _isLoggedIn = true;
-      _userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
-      _userEmail = email;
-      _userName = email.split('@').first;
-      notifyListeners();
-      return true;
     } catch (e) {
-      return false;
+      _isLoggedIn = false;
     }
+    _isLoading = false;
+    notifyListeners();
   }
 
-  // Sign up
-  Future<bool> signup(String name, String email, String password) async {
+  Future<void> signup(String name, String email, String password, String userType) async {
+    _isLoading = true;
+    notifyListeners();
     try {
       await Future.delayed(const Duration(seconds: 1));
+      _currentUser = User(
+        id: 'user_${DateTime.now().millisecondsSinceEpoch}',
+        name: name,
+        email: email,
+        userType: userType,
+        createdAt: DateTime.now(),
+      );
       _isLoggedIn = true;
-      _userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
-      _userEmail = email;
-      _userName = name;
-      notifyListeners();
-      return true;
     } catch (e) {
-      return false;
+      _isLoggedIn = false;
     }
-  }
-
-  // Set role
-  void setRole(String role) {
-    _userRole = role;
+    _isLoading = false;
     notifyListeners();
   }
 
-  // Complete onboarding
-  void completeOnboarding() {
-    _isOnboardingComplete = true;
-    notifyListeners();
-  }
-
-  // Update profile
-  void updateProfile({String? name, String? profileImage}) {
-    if (name != null) _userName = name;
-    if (profileImage != null) _userProfileImage = profileImage;
-    notifyListeners();
-  }
-
-  // Logout
-  void logout() {
+  Future<void> logout() async {
+    _currentUser = null;
     _isLoggedIn = false;
-    _isOnboardingComplete = false;
-    _userRole = null;
-    _userId = null;
-    _userName = null;
-    _userEmail = null;
-    _userProfileImage = null;
     notifyListeners();
   }
 }
