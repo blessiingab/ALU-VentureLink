@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AuthProvider extends ChangeNotifier {
   bool _isLoggedIn = false;
   bool _isOnboardingComplete = false;
-  String? _userRole; // 'student' or 'startup'
+  String? _userRole; // 'student', 'startup', 'investor', 'mentor'
   String? _userId;
   String? _userName;
   String? _userEmail;
@@ -19,11 +19,12 @@ class AuthProvider extends ChangeNotifier {
   String? get userProfileImage => _userProfileImage;
   bool get isStudent => _userRole == 'student';
   bool get isStartup => _userRole == 'startup';
+  bool get isInvestor => _userRole == 'investor';
+  bool get isMentor => _userRole == 'mentor';
 
   // Login
   Future<bool> login(String email, String password) async {
     try {
-      // Mock login
       await Future.delayed(const Duration(seconds: 1));
       _isLoggedIn = true;
       _userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
@@ -37,11 +38,10 @@ class AuthProvider extends ChangeNotifier {
   }
 
   // Sign up
-  Future<bool> signup(String name, String email, String password, String role) async {
+  Future<bool> signup(String name, String email, String password) async {
     try {
       await Future.delayed(const Duration(seconds: 1));
       _isLoggedIn = true;
-      _userRole = role;
       _userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
       _userEmail = email;
       _userName = name;
@@ -65,10 +65,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   // Update profile
-  void updateProfile({
-    String? name,
-    String? profileImage,
-  }) {
+  void updateProfile({String? name, String? profileImage}) {
     if (name != null) _userName = name;
     if (profileImage != null) _userProfileImage = profileImage;
     notifyListeners();
