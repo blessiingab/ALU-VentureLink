@@ -1,2 +1,0 @@
-// application_model.dart
-

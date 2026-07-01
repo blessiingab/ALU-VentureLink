@@ -1,2 +1,0 @@
-// applications_screen.dart
-
